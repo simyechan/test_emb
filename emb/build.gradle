@@ -16,12 +16,13 @@ repositories {
 }
 
 dependencies {
-	// jdbc
-	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	// redis
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+	// validation
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
 	// web
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
 	// lombok
@@ -29,11 +30,12 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 
 	// jwt
-	implementation 'io.jsonwebtoken:jjwt-api:0.12.1'
-	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.1'
-	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.1'
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+	// 0.12 대 버전부터 parseClaimsJws메서드 사라짐
 
-	// db
+	// mysql
 	runtimeOnly 'com.mysql:mysql-connector-j'
 
 	// security
@@ -43,7 +45,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
 	// configuration
-	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
 	// test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
