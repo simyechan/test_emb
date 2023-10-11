@@ -16,14 +16,14 @@ spring:
     show-sql: true
 
     redis:
-      host: ${REDIS_HOST:localhost}
-      port: ${REDIS_PORT:6379}
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
       password: ${REDIS_PASSWORD}
 
   jwt:
-    secret-key: ${JWT_SECRET_KEY:emb}
-    access-exp: ${JWT_ACCESS_EXP:7200}
-    refresh-exp: ${JWT_REFRESH_EXP:123456789}
+    secret-key: ${JWT_SECRET_KEY}
+    access-exp: ${JWT_ACCESS_EXP}
+    refresh-exp: ${JWT_REFRESH_EXP}
     header: ${JWT_HEADER}
     prefix: ${JWT_PREFIX}
 
@@ -31,9 +31,3 @@ logging:
   level:
     org.hibernate.SQL: debug
     org.hibernate.type: trace
-
-
-#    properties:
-#      hibernate:
-#        show_sql: true
-#        format_sql: true

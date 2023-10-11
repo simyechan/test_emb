@@ -1,8 +1,8 @@
-package com.example.emb.global.config;
+package com.example.emb.global.security;
 
+import com.example.emb.global.config.FilterConfig;
 import com.example.emb.global.security.jwt.JwtTokenProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.servlet.FilterConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
