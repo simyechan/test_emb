@@ -27,9 +27,10 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    // 추후에 수정
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
+        http
                 .cors(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
                 .formLogin((formLogin) -> formLogin.disable())
@@ -40,9 +41,9 @@ public class SecurityConfig {
                         .requestMatchers("/**").permitAll()
                         .anyRequest().permitAll())
 
-                .apply(new FilterConfig(jwtTokenProvider, objectMapper))
+                .apply(new FilterConfig(jwtTokenProvider, objectMapper));
 
-                .build();
+        return http.build();
     }
 
 }
