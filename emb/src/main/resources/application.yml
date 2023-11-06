@@ -2,34 +2,32 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/emb?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username: root
-    password: chan1125
-
-  security:
-    jwt:
-      secret-key: ${JWT_SECRET_KEY:emb}
-      access-exp: ${JWT_ACCESS_EXP:7200}
-      refresh-exp: ${JWT_REFRESH_EXP:123456789}
-      header: ${JWT_HEADER}
-      prefix: ${JWT_PREFIX}
+    username: { username }
+    password: { password }
 
   jpa:
     database: mysql
-    generate-ddl: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: update
-      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-    show_sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
 
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      password: ${REDIS_PASSWORD}
 
+  jwt:
+    secret-key: ${JWT_SECRET_KEY}
+    access-exp: ${JWT_ACCESS_EXP}
+    refresh-exp: ${JWT_REFRESH_EXP}
+    header: ${JWT_HEADER}
+    prefix: ${JWT_PREFIX}
 
 logging:
   level:
     org.hibernate.SQL: debug
     org.hibernate.type: trace
-
-
-#    properties:
-#      hibernate:
-#        show_sql: true
-#        format_sql: true

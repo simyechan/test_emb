@@ -15,9 +15,16 @@ public class RefreshToken {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private String user_id;
 
     private String token;
+
+    @TimeToLive
+    private Long timeToLive;
+
+    public void updateToken(String token, Long timeToLive) {
+        this.token = token;
+        this.timeToLive = timeToLive;
+    }
+
 }

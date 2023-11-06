@@ -2,6 +2,7 @@ package com.example.emb.global.security.auth;
 
 import com.example.emb.domain.user.domain.User;
 import com.example.emb.domain.user.domain.repository.UserRepository;
+import com.example.emb.global.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,7 +17,8 @@ public class AuthDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String user_id) throws UsernameNotFoundException {
-        User user = userRepository.findByUser_id(user_id);
-        return new AuthDetails(user);
+        return userRepository.findByUser_id(user_id)
+                .map(AuthDetails::new)
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
 }
